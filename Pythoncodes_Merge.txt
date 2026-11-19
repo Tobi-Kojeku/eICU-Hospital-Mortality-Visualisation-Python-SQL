@@ -1,0 +1,34 @@
+import pandas as pd
+import sqlite3
+
+
+base_path = r"C:\Update to your path"
+
+csv_full_path = base_path + r"\patient.csv"
+sqlite_path = base_path + r"\eicu_v2_0_1.sqlite"
+
+# Load demographics CSV
+df_demo = pd.read_csv(csv_full_path)
+
+# Load labels y from SQLite
+conn = sqlite3.connect(sqlite_path)
+query = """
+SELECT
+  patientunitstayid,
+  MAX(CASE WHEN actualhospitalmortality = 'EXPIRED' THEN 1 ELSE 0 END) AS y
+FROM apachepatientresult
+GROUP BY patientunitstayid;
+"""
+df_y = pd.read_sql_query(query, conn)
+conn.close()
+
+# Ensure ID types match
+df_demo["patientunitstayid"] = pd.to_numeric(df_demo["patientunitstayid"], errors="coerce")
+df_y["patientunitstayid"] = pd.to_numeric(df_y["patientunitstayid"], errors="coerce")
+
+# Merge
+df = df_demo.merge(df_y, on="patientunitstayid", how="inner")
+
+print("Rows after merge:", len(df))
+print("y missing:", df["y"].isna().sum())
+print(df[["patientunitstayid","gender","age","ethnicity","y"]].head())

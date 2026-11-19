@@ -1,0 +1,50 @@
+## How to Run 
+
+### 1) Prerequisites
+Install required packages:
+
+# pip install pandas seaborn matplotlib
+
+
+ Copy code
+
+
+### 2) Confirm / update your local paths
+In both scripts, confirm the `base_path` points to your folder containing:
+- `patient.csv`
+- `eicu_v2_0_1.sqlite`
+
+(Windows)
+ext
+C:\"use your path"
+
+
+ Copy code
+
+
+### 3) Run the merge script (create `df`)
+Run:
+# python Pythoncodes_Merge.txt
+
+
+ Copy code
+
+
+This step:
+- loads demographics from `patient.csv`
+- extracts the mortality label `y` from SQLite (`apachepatientresult`)
+- merges into a single dataframe called `df`
+- prints merge diagnostics (row count, missing `y` count)
+
+### 4) Run the visualisations (requires `df`)
+In the same Python session right after Step 3, run:
+# python Pythoncodes_Visualisation.txt
+
+
+ Copy code
+
+
+This generates and displays the cohort plots using `df`.
+
+**Important:** The visualisation script uses `df` directly, so if you run it in a separate Python session (without re-running the merge first), you will likely get an error like:
+`NameError: name 'df' is not defined`.
