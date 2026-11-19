@@ -1,6 +1,6 @@
 # eICU Hospital Mortality Cohort — Merge + Visualisations (SQLite + CSV)
 
-This repository contains the code to build a cohort dataset for hospital mortality prediction from the eICU Collaborative Research Database Demo and to generate exploratory cohort visualisations.(https://doi.org/10.13026/4mxk-na84)-PhysioNet
+This repository contains the code to build a cohort dataset for hospital mortality prediction from the eICU Collaborative Research Database Demo and to generate exploratory cohort visualisations.
 
 The project uses:
 - **Demographics** from `patient.csv` (CSV)
