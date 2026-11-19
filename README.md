@@ -22,11 +22,6 @@ The project uses:
 - `Pythoncodes_Visualisation.txt`
   - Creates cohort plots using dataframe `df`
 
-- `results/`
-  - 
-
----
-
 ## Data Used
 
 ### Input files
@@ -102,7 +97,7 @@ The scripts display figures using `plt.show()`.
 
 
 
-## Saved Outputs (PNG)
+## Saved Outputs 
 
 Age Distribution by Hospital Mortality.png
 Cohort Age distribution.png
@@ -116,11 +111,11 @@ Hospital Mortality By Gender.png
 
 ### 1) Prerequisites
 Install required packages:
-# pip install pandas seaborn matplotlib
+ pip install pandas seaborn matplotlib
 
 
 ### 2) Confirm file paths
-Update/confirm `base_path` inside:
+confirm `base_path`:
 - `Pythoncodes_Merge.txt`
 - `Pythoncodes_Visualisation.txt`
 
